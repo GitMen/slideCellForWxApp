@@ -1,0 +1,22 @@
+<!--index.wxml-->
+
+
+<!-- 
+itemColor: cell背景色
+deleteItemEvent:绑定删除事件
+slideItemEvent:绑定左滑动打开
+cellHeight:cell高度 
+-->
+ <slideitem  id="slideitem-{{index}}" 
+             class='cell-class'
+             row="{{index}}"
+             itemColor="#fff"
+             bind:deleteItemEvent='deleteAction' 
+             bind:slideItemEvent='slideAction' 
+             bind:selectItemEvent='selectCellAction'
+             cellHeight="120rpx" 
+             wx:for="{{dataArray}}" 
+             wx:for-item="data"
+             wx:key="{{index}}">
+    <text style='width:100%;height:100%;line-height:120rpx;margin-left:40rpx'>{{data}}</text>
+</slideitem>

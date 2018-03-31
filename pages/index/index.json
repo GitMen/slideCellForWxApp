@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "slideitem": "/components/slideitem/slideitem"
+  }
+}

@@ -1,0 +1,48 @@
+<!--components/slideitem/slideitem.wxml-->
+<view class='slide-item' style='height: {{cellHeight}}' data-row="{{row}}"> 
+            <view class='item-inner item-content clearfix'  bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE"  style="{{slideStyle}};background-color: {{itemColor}}" catchtap='selectAction'>
+                 <!-- 这里是组件的内部节点 -->
+                 <slot></slot>
+            </view>
+           <view class='item-inner del' style='line-height: {{cellHeight}}' data-indexpath="{{section}}-{{row}}" bindtap="delItem">删除</view>   
+</view> 
+
+<!-- wxml内调用方式 
+itemColor: cell背景色
+deleteItemEvent:绑定删除事件
+slideItemEvent:绑定左滑动打开
+cellHeight:cell高度
+
+<view wx:for="{{cellDataArray}}" wx:for-item="cellData" wx:key="{{index}}">
+  <slideitem id="slideitem-{{index}}" 
+           row="{{index}}"
+           section="{{自定义section}}"
+           itemColor="#fff"
+           bind:deleteItemEvent='deleteAction' 
+           bind:slideItemEvent='slideAction' 
+           cellHeight="80rpx">
+      <内部放入自定义视图>
+  </slideitem>
+</view>
+-->
+  <!-- js文件绑定方法
+  deleteAction: function(e){
+    //拿到角标
+    var row = e.detail.row;
+    //删除逻辑
+  },
+  slideAction: function(e){
+    //拿到角标
+    var row = e.detail.row;
+    //获取角标cell
+    var slideSender = this.selectComponent("#slideitem-"+row);
+    //在data中定义lastSlideSender 属性,用户记录上一个打开的cell
+    var lastSlideSender = this.data.lastSlideSender;
+    //如果存在已经打开的cell则关闭
+    if (lastSlideSender != null && lastSlideSender != slideSender){
+      lastSlideSender.restoreSalid();
+    }
+    this.setData({
+      lastSlideSender: slideSender
+    })
+  } -->
